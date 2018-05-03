@@ -25,6 +25,7 @@ const apiToken = process.env.API_TOKEN || (console.error('Please configure your 
   app.use(require('morgan')('dev'))
   app.use(require('body-parser').json())
   app.use(require('body-parser').urlencoded({ extended: true }))
+  app.use(require('cors')());
 
   app.get('/info', auth, wrap(async (req, res) => res.send(await ln.getinfo())))
 
